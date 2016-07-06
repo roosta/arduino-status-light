@@ -2,40 +2,55 @@
 // released under the GPLv3 license to match the rest of the AdaFruit NeoPixel library
 
 #include <Adafruit_NeoPixel.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_NeoMatrix.h>
+#include <Adafruit_NeoPixel.h>
+
 #ifdef __AVR__
   #include <avr/power.h>
 #endif
 
-// Which pin on the Arduino is connected to the NeoPixels?
-// On a Trinket or Gemma we suggest changing this to 1
-#define PIN            6
+#define PIN 6
+#define NUMPIXELS 16
 
-// How many NeoPixels are attached to the Arduino?
-#define NUMPIXELS      16
+// Color definitions
+#define BLACK    0x0000
+#define BLUE     0x001F
+#define RED      0xF800
+#define GREEN    0x07E0
+#define CYAN     0x07FF
+#define MAGENTA  0xF81F
+#define YELLOW   0xFFE0 
+#define WHITE    0xFFFF
 
-// When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.
-// Note that for older NeoPixel strips you might need to change the third parameter--see the strandtest
-// example for more information on possible values.
-Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+/* Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN); */
 
 int delayval = 500; // delay for half a second
 
+Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(4, 4, 6,
+    NEO_MATRIX_TOP + NEO_MATRIX_LEFT +
+    NEO_MATRIX_ROWS + NEO_MATRIX_ZIGZAG);
+
 void setup() {
-  pixels.begin(); // This initializes the NeoPixel library.
+  matrix.begin();
 }
 
+void test() {
+  /* print("aslkdj"); */
+  /* system("/usr/bin/sensors"); */
+}
 void loop() {
+  matrix.drawRect(0, 0, 4, 4, BLUE);
+  matrix.show();
 
-  // For a set of NeoPixels the first NeoPixel is 0, second is 1, all the way up to the count of pixels minus one.
+  matrix.drawRect(1, 1, 2, 2, MAGENTA);
+  matrix.show();
+  delay(500);
 
-  for(int i=0;i<NUMPIXELS;i++){
+  matrix.drawRect(1, 1, 2, 2, BLACK);
+  matrix.show();
+  delay(500);
+  /* matrix.fillScreen(0); */
+  /* matrix.drawPixel(0, 0, BLUE); */
 
-    // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
-    pixels.setPixelColor(i, pixels.Color(0,150,0)); // Moderately bright green color.
-
-    pixels.show(); // This sends the updated pixel color to the hardware.
-
-    delay(delayval); // Delay for a period of time (in milliseconds).
-
-  }
 }

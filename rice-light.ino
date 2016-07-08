@@ -26,30 +26,38 @@
 /* Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN); */
 
 int delayval = 500; // delay for half a second
+int incoming = 0;   // for incoming serial data
 
 Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(4, 4, 6,
     NEO_MATRIX_TOP + NEO_MATRIX_LEFT +
     NEO_MATRIX_ROWS + NEO_MATRIX_ZIGZAG);
 
 void setup() {
+  Serial.begin(9600);           // set up Serial library at 9600 bps
+  Serial.println("Hello world!"); 
+  matrix.setBrightness(100);
   matrix.begin();
 }
 
-void test() {
-  /* print("aslkdj"); */
-  /* system("/usr/bin/sensors"); */
-}
 void loop() {
   matrix.drawRect(0, 0, 4, 4, BLUE);
   matrix.show();
 
-  matrix.drawRect(1, 1, 2, 2, MAGENTA);
-  matrix.show();
-  delay(500);
+  // send data only when you receive data:
+  if (Serial.available() > 0) {
+    // read the incoming byte:
+    incoming = Serial.parseInt();
 
-  matrix.drawRect(1, 1, 2, 2, BLACK);
-  matrix.show();
-  delay(500);
+    // say what you got:
+    if (incoming == 1) {
+      matrix.drawRect(1, 1, 2, 2, MAGENTA);
+      matrix.show();
+    }
+    else {
+      matrix.drawRect(1, 1, 2, 2, BLACK);
+      matrix.show();
+    }
+  }
   /* matrix.fillScreen(0); */
   /* matrix.drawPixel(0, 0, BLUE); */
 

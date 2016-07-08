@@ -1,3 +1,4 @@
+#!/bin/env bash
 project_dir=~/dev/rice-light
 dependencies=../lib/dependencies.txt
 cd $project_dir/lib

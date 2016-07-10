@@ -111,9 +111,8 @@ class Data:
     def sysData(self):
         # get CPU usage info
         cpu_total, cpu_idle = self.data.cpu()
-        cpu_usage = 1 - (
-            float(cpu_idle-self.cpu_idle) / float(cpu_total-self.cpu_total)
-            )
+        cpu_usage = (1 - (float(cpu_idle-self.cpu_idle) /
+                          float(cpu_total-self.cpu_total))) * 100
         self.cpu_total = cpu_total
         self.cpu_idle = cpu_idle
 
@@ -123,7 +122,7 @@ class Data:
         mem_total, mem_used, mem_used_percent = self.data.memory()
 
         response = {
-            'cpu_usage': (cpu_usage * 100),
+            'cpu_usage': (cpu_usage),
             'cpu_temp': cpu_temp,
             'mem_used': mem_used,
             'mem_total': mem_total,

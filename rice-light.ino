@@ -37,6 +37,7 @@ void setup() {
   Serial.println("Hello world!"); 
   matrix.setBrightness(100);
   matrix.begin();
+  while (!Serial);
 }
 
 void loop() {
@@ -48,7 +49,6 @@ void loop() {
     // read the incoming byte:
     incoming = Serial.parseInt();
 
-    // say what you got:
     if (incoming == 1) {
       matrix.drawRect(1, 1, 2, 2, MAGENTA);
       matrix.show();

@@ -34,14 +34,14 @@ Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(4, 4, 6,
 
 void setup() {
   Serial.begin(9600);           // set up Serial library at 9600 bps
-  Serial.println("Hello world!"); 
-  matrix.setBrightness(100);
+  /* Serial.println("Hello world!"); */ 
+  matrix.setBrightness(75);
   matrix.begin();
   while (!Serial);
 }
 
 void loop() {
-  matrix.drawRect(0, 0, 4, 4, BLUE);
+  matrix.drawRect(3, 3, 1, 1, BLUE);
   matrix.show();
 
   // send data only when you receive data:
@@ -49,12 +49,12 @@ void loop() {
     // read the incoming byte:
     incoming = Serial.parseInt();
 
-    if (incoming == 1) {
-      matrix.drawRect(1, 1, 2, 2, MAGENTA);
+    if (incoming > 25) {
+      matrix.drawRect(3, 2, 1, 2, BLUE);
       matrix.show();
     }
-    else {
-      matrix.drawRect(1, 1, 2, 2, BLACK);
+    else if (incoming > 25 && incoming < 50) {
+      matrix.drawRect(3, 2, 2, 2, BLUE);
       matrix.show();
     }
   }

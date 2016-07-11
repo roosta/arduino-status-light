@@ -14,7 +14,7 @@ All credit goes to original author:
 import serial
 import re
 import subprocess
-from time import time
+# from time import time
 from time import sleep
 # import sys
 
@@ -132,7 +132,9 @@ class Data:
         return response
 
 data = Data()
+ser = serial.Serial("/dev/ttyUSB0", 9600)
+# ser.write("2".encode())
 
 while True:
-    print(data.sysData())
+    ser.write(data.sysData()['cpu_usage'].encode())
     sleep(1)

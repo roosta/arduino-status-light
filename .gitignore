@@ -1,4 +1,6 @@
-lib
+lib/*
+!lib/README.md
+!lib/dependencies.txt
 .build
 build-uno
 __pycache__

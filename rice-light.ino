@@ -29,7 +29,7 @@ int delayval = 500; // delay for half a second
 int incoming = 0;   // for incoming serial data
 
 Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(4, 4, 6,
-    NEO_MATRIX_TOP + NEO_MATRIX_LEFT +
+    NEO_MATRIX_BOTTOM + NEO_MATRIX_RIGHT +
     NEO_MATRIX_ROWS + NEO_MATRIX_ZIGZAG);
 
 void setup() {
@@ -40,23 +40,34 @@ void setup() {
   while (!Serial);
 }
 
+void cpu_usage() {
+  // read the incoming byte:
+  incoming = Serial.parseInt();
+  if (incoming < 25) {
+    matrix.drawRect(3, 0, 1, 4, BLACK);
+    matrix.drawRect(3, 3, 1, 1, BLUE);
+    matrix.show();
+  }
+  else if (incoming >= 25 && incoming < 50) {
+    matrix.drawRect(3, 0, 1, 4, BLACK);
+    matrix.drawRect(3, 2, 1, 2, BLUE);
+    matrix.show();
+  }
+  else if (incoming >= 50 && incoming < 75) {
+    matrix.drawRect(3, 0, 1, 4, BLACK);
+    matrix.drawRect(3, 1, 1, 3, BLUE);
+    matrix.show();
+  }
+  else if (incoming >= 75) {
+    matrix.drawRect(3, 0, 1, 4, BLACK);
+    matrix.drawRect(3, 0, 1, 4, BLUE);
+    matrix.show();
+  }
+}
 void loop() {
-  matrix.drawRect(3, 3, 1, 1, BLUE);
-  matrix.show();
-
   // send data only when you receive data:
   if (Serial.available() > 0) {
-    // read the incoming byte:
-    incoming = Serial.parseInt();
-
-    if (incoming > 25) {
-      matrix.drawRect(3, 2, 1, 2, BLUE);
-      matrix.show();
-    }
-    else if (incoming > 25 && incoming < 50) {
-      matrix.drawRect(3, 2, 2, 2, BLUE);
-      matrix.show();
-    }
+    cpu_usage();
   }
   /* matrix.fillScreen(0); */
   /* matrix.drawPixel(0, 0, BLUE); */

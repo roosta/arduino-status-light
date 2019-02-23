@@ -131,6 +131,7 @@ class Data:
 
         return response
 
+
 data = Data()
 ser = serial.Serial("/dev/ttyUSB0", 9600)
 # ser.write("2".encode())

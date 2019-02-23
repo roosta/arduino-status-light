@@ -5,6 +5,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoMatrix.h>
 #include <Adafruit_NeoPixel.h>
+#include <SPI.h>
 
 #ifdef __AVR__
   #include <avr/power.h>
@@ -20,7 +21,7 @@
 #define GREEN    0x07E0
 #define CYAN     0x07FF
 #define MAGENTA  0xF81F
-#define YELLOW   0xFFE0 
+#define YELLOW   0xFFE0
 #define WHITE    0xFFFF
 
 /* Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN); */
@@ -34,7 +35,7 @@ Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(4, 4, 6,
 
 void setup() {
   Serial.begin(9600);           // set up Serial library at 9600 bps
-  /* Serial.println("Hello world!"); */ 
+  /* Serial.println("Hello world!"); */
   matrix.setBrightness(75);
   matrix.begin();
   while (!Serial);

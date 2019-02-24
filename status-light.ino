@@ -14,6 +14,9 @@
 #define PIN 6
 #define NUMPIXELS 16
 
+#define mw 4
+#define mh 4
+
 // Color definitions
 #define BLACK    0x0000
 #define BLUE     0x001F
@@ -29,7 +32,7 @@
 int delayval = 500; // delay for half a second
 int incoming = 0;   // for incoming serial data
 
-Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(4, 4, 6,
+Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(mw, mh, PIN,
     NEO_MATRIX_BOTTOM + NEO_MATRIX_RIGHT +
     NEO_MATRIX_ROWS + NEO_MATRIX_ZIGZAG);
 

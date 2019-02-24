@@ -56,17 +56,17 @@ void cpu_usage(int incoming) {
     matrix.drawRect(3, 3, 1, 1, BLUE);
     matrix.show();
   }
-  else if (incoming >= 25 && incoming < 50) {
+  else if (incoming >= 25 && incoming <= 50) {
     matrix.drawRect(3, 0, 1, 4, BLACK);
     matrix.drawRect(3, 2, 1, 2, BLUE);
     matrix.show();
   }
-  else if (incoming >= 50 && incoming < 75) {
+  else if (incoming > 50 && incoming <= 75) {
     matrix.drawRect(3, 0, 1, 4, BLACK);
     matrix.drawRect(3, 1, 1, 3, BLUE);
     matrix.show();
   }
-  else if (incoming >= 75) {
+  else if (incoming > 75) {
     matrix.drawRect(3, 0, 1, 4, BLACK);
     matrix.drawRect(3, 0, 1, 4, BLUE);
     matrix.show();

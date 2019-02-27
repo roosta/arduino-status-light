@@ -1,6 +1,5 @@
 (ns status-light
-  (:require [serial.core :as serial]
-            [serial.util :as util]))
+  (:require [serial-port :as serial]))
 
 (def port (serial/open "/dev/ttyUSB0"))
 

@@ -13,3 +13,4 @@
 * [[https://github.com/owainlewis/clojure-mail][owainlewis/clojure-mail: A Clojure library for parsing, downloading and reading email from IMAP servers.]]
 * [[https://github.com/dcuddeback/serial-rs/blob/master/serial/examples/read_write.rs][serial-rs/read_write.rs at master · dcuddeback/serial-rs]]
 * [[https://github.com/dcuddeback/serial-rs/blob/master/serial/examples/open_port.rs][serial-rs/open_port.rs at master · dcuddeback/serial-rs]]
+* [[https://arduino.stackexchange.com/questions/41717/arduino-uno-only-works-with-monitor-serial-opened][Arduino UNO only works with Monitor Serial opened - Arduino Stack Exchange]]

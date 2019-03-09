@@ -65,11 +65,22 @@ void cpu_usage(int incoming) {
   }
 }
 
+void draw_pixel(int x, int y, int color) {
+  matrix.drawPixel(x, y, color);
+  matrix.show();
+}
+
 void loop() {
   // send data only when you receive data:
   if (Serial.available() > 0) {
     unsigned char inputBuffer[3];
     Serial.readBytes(inputBuffer, sizeof(inputBuffer));
-    matrix.drawPixel(inputBuffer[0], inputBuffer[1], inputBuffer[2]);
+    draw_pixel(inputBuffer[0], inputBuffer[1], inputBuffer[2]);
+    Serial.print("x:");
+    Serial.println(inputBuffer[0], DEC);
+    Serial.print("y:");
+    Serial.println(inputBuffer[1], DEC);
+    Serial.print("color:");
+    Serial.println(inputBuffer[2], DEC);
   }
 }

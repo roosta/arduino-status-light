@@ -29,26 +29,18 @@
 
 /* Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN); */
 
-int delayval = 500; // delay for half a second
-int incomingByte = 0;   // for incoming serial data
-
 Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(mw, mh, PIN,
     NEO_MATRIX_BOTTOM + NEO_MATRIX_RIGHT +
     NEO_MATRIX_ROWS + NEO_MATRIX_ZIGZAG);
 
 void setup() {
   Serial.begin(9600);           // set up Serial library at 9600 bps
-  /* Serial.println("Hello world!"); */
   matrix.setBrightness(75);
   matrix.begin();
   while (!Serial);
 }
 
 void cpu_usage(int incoming) {
-
-  // say what you got:
-  Serial.print("I received: ");
-  Serial.println(incoming, DEC);
 
   // read the incoming byte:
   if (incoming < 25) {
@@ -76,10 +68,8 @@ void cpu_usage(int incoming) {
 void loop() {
   // send data only when you receive data:
   if (Serial.available() > 0) {
-    incomingByte = Serial.read();
-    cpu_usage(incomingByte);
+    unsigned char inputBuffer[3];
+    Serial.readBytes(inputBuffer, sizeof(inputBuffer));
+    matrix.drawPixel(inputBuffer[0], inputBuffer[1], inputBuffer[2]);
   }
-  /* matrix.fillScreen(0); */
-  /* matrix.drawPixel(0, 0, BLUE); */
-
 }

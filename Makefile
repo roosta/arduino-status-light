@@ -13,3 +13,5 @@ ARDMK_DIR = ./lib/Arduino-Makefile
 ### Do not touch - the path to Arduino.mk, inside the ARDMK_DIR
 include $(ARDMK_DIR)/Arduino.mk
 
+install:
+	./script/update-or-clone.sh deps.txt

@@ -14,3 +14,6 @@
 * [[https://github.com/dcuddeback/serial-rs/blob/master/serial/examples/read_write.rs][serial-rs/read_write.rs at master · dcuddeback/serial-rs]]
 * [[https://github.com/dcuddeback/serial-rs/blob/master/serial/examples/open_port.rs][serial-rs/open_port.rs at master · dcuddeback/serial-rs]]
 * [[https://arduino.stackexchange.com/questions/41717/arduino-uno-only-works-with-monitor-serial-opened][Arduino UNO only works with Monitor Serial opened - Arduino Stack Exchange]]
+* [[https://github.com/FastLED/FastLED][FastLED/FastLED: The main FastLED library (successor to FastSPI_LED). Please direct questions/requests for advice to the g+ community - http://fastled.io/+ - we'd like to keep issues to just tracking bugs/enhancements/tasks. *NOTE* library work is currently on hold - see https://plus.google.com/102282558639672545743/posts/JQKcujjaXXC for details.]]
+* [[https://www.arduino.cc/en/Tutorial/ReadASCIIString][Arduino - ReadASCIIString]]
+* [[https://github.com/thi-ng/crypto][thi-ng/crypto: Small Clojure lib to provide basic GPG keypair generation, encryption & decryption facilities]]
